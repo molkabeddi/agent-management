@@ -17,7 +17,6 @@ public class AgentService {
 
     private final AgentRepository agentRepository;
 
-    // ✅ Un seul constructeur pour l'injection
     public AgentService(AgentRepository agentRepository) {
         this.agentRepository = agentRepository;
     }
@@ -47,7 +46,6 @@ public class AgentService {
         if (!agent.getEmail().equals(req.email()) && agentRepository.existsByEmail(req.email())) {
             throw new DataIntegrityViolationException("Email already exists");
         }
-        // copie et sauvegarde
         AgentMapper.copyForUpdate(agent, req);
         return AgentMapper.toResponse(agentRepository.save(agent));
     }

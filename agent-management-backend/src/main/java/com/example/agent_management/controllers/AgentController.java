@@ -16,7 +16,6 @@ public class AgentController {
 
     private final AgentService agentService;
 
-    // ✅ Un seul constructeur pour l'injection
     public AgentController(AgentService agentService) {
         this.agentService = agentService;
     }
